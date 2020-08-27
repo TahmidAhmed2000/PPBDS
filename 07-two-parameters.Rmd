@@ -175,6 +175,8 @@ pennies_sample
 
 The `pennies_sample` data frame has 50 rows corresponding to each penny with two variables. The first variable `ID` corresponds to the ID labels in Figure \@ref(fig:resampling-exercise-c), whereas the second variable `year` corresponds to the year of minting saved as a numeric variable, also known as a double (`dbl`).
 
+Additionally, let's look at what a Preceptor Table would look like in this `pennies_sample example`. Essentially, what we are seeing is that if you are given a random penny in 2019, we are trying to estimate what they year is for that random penny. The last row is your best guess if that random year is given, because given that we are dealing with one parameter we are only dealing with one row. 
+
 ```{r, echo = FALSE}
 # Here is my guess for what a Preceptor table would look like in this
 # pennies_sample example. I haven't been showing the code for the set up so echo
@@ -257,11 +259,11 @@ We summarize the correspondence between the sampling urn exercise in Chapter \@r
 
 ```{r, echo=FALSE}
 
-absurd_hack <- tibble(Scenario = c("1", "2", "3", "4", "5", "6"), 
-                      Population_parameter = c("Population Proportion", "Population mean", "Difference in population proportions", "Difference in Pupulation means", "Population regression slope", "Population regression coefficient"),
-                      Notation = c("$$p$$", "$$\\mu $$", "$$p_1 - p_2$$", "$$\\mu_1 - \\mu_2$$", "$$\\beta_1$$", "$$\\beta_0$$"), 
-                      Point_Estimate = c("Sample Proportion","Sample mean", "Difference in sample proportions", "Difference in sample means", "Fitted regression slope", "Fitted regression intercept"),
-                      Symbol = c("$$\\hat{p}$$", "$$\\overline{x}$$ or $$\\hat{\\mu}$$", "$$\\hat{p}_1 - \\hat{p}_2$$", "$$\\overline{x}_1 - \\overline{x}_2$$", "$$b_1$$ or $$\\hat{\\beta}_1$$", "\\$$b_0$$ or $$\\hat{\\beta}_0$$")) %>%  gt() %>%  fmt_markdown(columns = TRUE)
+absurd_hack <- tibble(Scenario = c("1", "2", "3", "4"), 
+                      Population_parameter = c("Population Proportion", "Population mean", "Difference in population proportions", "Difference in population means"),
+                      Notation = c("$$p$$", "$$\\mu $$", "$$p_1 - p_2$$", "$$\\mu_1 - \\mu_2$$"), 
+                      Point_Estimate = c("Sample Proportion","Sample mean", "Difference in sample proportions", "Difference in sample means"),
+                      Symbol = c("$$\\hat{p}$$", "$$\\overline{x}$$ or $$\\hat{\\mu}$$", "$$\\hat{p}_1 - \\hat{p}_2$$", "$$\\overline{x}_1 - \\overline{x}_2$$")) %>%  gt() %>%  fmt_markdown(columns = TRUE)
 absurd_hack
 
 ```
