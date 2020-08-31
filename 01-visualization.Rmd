@@ -3,7 +3,23 @@ output_yaml:
   - _output.yml
 ---
 
-<!-- Pushing change to new branch  -->
+
+<!-- Jake Berg: for chapters 1 and 2. Functions/other things to include in the textbook: -->
+<!-- - How to remove columns with the select() function (as opposed to keeping columns—i.e. using a minus sign) -->
+<!-- - n(), which counts total # of rows [in each group], especially alongside group_by() and summarize(). -->
+<!-- - coord_cartesian() and xlim/ylim, which allows for zooming/rescaling graphs. -->
+<!-- - if_else() and case_when() from dplyr, especially alongside mutate(). -->
+<!-- - as.factor(), especially alongside mutate(). -->
+<!-- - scales in general, and in particular, RColorBrewer and viridis. -->
+<!-- - using scales to change the name and labels of a legend. -->
+<!-- - tidyr's drop_na(). -->
+<!-- - facet_grid() to facet by more than 1 variable. -->
+<!-- - %%, the modulo operator. -->
+
+<!-- In addition, some functions that I don't use super often but would be nice to include in the textbook if you want to: -->
+<!-- - the max() and min() functions, especially alongside summarize(). -->
+<!-- - dplyr's ntile() function to turn continuous data into categorical data. -->
+<!-- - the n_unique() function, a more selective version of n(). -->
 
 <!-- 0) No warnings or other messages. -->
 
@@ -11,7 +27,6 @@ output_yaml:
 
 <!-- 2) Purpose of Advanced plotting is to show the tools for making the plots that appear in socviz.co, chapters 3 and 4.  -->
 
-<!-- 3) Other geoms we should add. What about geom_bin2d and geom_density2d? These would be useful in chapter 5 when we look at the joint densities. -->
 
 <!-- 4) Good stuff here: https://www.tidyverse.org/blog/2020/03/ggplot2-3-3-0/. Like scale_x_binned(); geom_histogram(aes(y = after_stat(density)))  -->
 
@@ -869,12 +884,6 @@ We can change `geom_histogram()` to `geom_density()` to make a density plot, whi
 ggplot(data = weather, mapping = aes(x = temp)) + geom_density()
 ```
 
-### `geom_bin2d()` 
-
-
-### `geom_density2d()`
-
-### `geom_contour_filled()`
 
 
 ## Advanced Plots
@@ -888,9 +897,11 @@ Generally speaking, the grammar of graphics allows for a high degree of customiz
 <!-- Links to relevant readings in Healy.  -->
 
 ### Labels
-- `labs` adds a title, subtitle, caption, label on the x axis, and label on the y axis
+
+- `labs()` adds a title, subtitle, caption, label on the x axis, and label on the y axis. You should use them in every plot. If you choose not to --- and that is often a reasonable choice --- you should explain why in a code comment.
 
 ### Faceting
+
 - `facet`ing breaks up a plot into several plots split by the values of another variable 
 
 Let's briefly introduce a new concept called *faceting*.  Faceting is used when we'd like to split a particular visualization by the values of another variable. This will create multiple copies of the same type of plot with matching x and y axes, but whose content will differ. 
@@ -927,36 +938,15 @@ month_facet_4 <- ggplot(data = weather, mapping = aes(x = temp)) +
 month_facet_4
 ```
 
-Observe in both Figures \@ref(fig:facethistogram) and \@ref(fig:facethistogram2) that as we might expect in the Northern Hemisphere, temperatures tend to be higher in the summer months, while they tend to be lower in the winter. 
+Observe in both Figures \@ref(fig:facethistogram) and \@ref(fig:facethistogram2) that as we might expect in the Northern Hemisphere, temperatures tend to be higher in the summer months, while they tend to be lower in the winter. See the ggplot2 book for [more details](https://ggplot2-book.org/facet.html).
 
 
+### Other Techniques
 
-### Legends
+<!-- DK: Add an example plot which uses example tricks which are most important from these. -->
 
-### Scales
-- `scales` that both
-    + convert *data units* to *physical units* the computer can display. For example, apply a log-transformation on one of the axes to focus on multiplicative rather than additive changes.
-    + draw a legend and/or axes, which provide an inverse mapping to make it possible to read the original data values from the graph.
+See the latest edition of the ggplot2 book for information about [statistical summaries](https://ggplot2-book.org/statistical-summaries.html),  [legends and axes](https://ggplot2-book.org/guides.html),  [scales](https://ggplot2-book.org/scales.html), [coordinate systems](https://ggplot2-book.org/coord.html), [themes](https://ggplot2-book.org/polishing.html). You can set the axes limits with `xlim()` and `ylim()`.
 
-### Positions
-- `position` adjustments for barplots or scatterplots
-
-
-
-### Coordinate Systems
-- `coord`inate system for x/y values: typically `cartesian`, but can also be `map` or `polar`.
-
-### Stats
-- `stat`istical transformations: this includes smoothing, binning values into a histogram, or no transformation at all (known as the `"identity"` transformation).
-
-### Adjusting Axes Limits
-- `xlim` and `ylim`
-
-### Adding Text to a Plot
-- `ggtext`
-
-### Themes
-- starting with `theme_minimal()` but going on to cool stuff like fivethirtyeight and TV themes
 
 ## The Tidyverse
 
@@ -1534,6 +1524,8 @@ flights %>%
 What happened here is that the second `group_by(month)` overwrote the grouping structure meta-data of the earlier `group_by(origin)`, so that in the end we are only grouping by `month`. The lesson here is if you want to `group_by()` two or more variables, you should include all the variables at the same time in the same `group_by()` adding a comma between the variable names.
 
 ## Conclusion
+
+Plotting is cool. Go practice!
 
 <!-- Mention rayshader package and show some examples of three d plots. Super cool! -->
 
