@@ -5,7 +5,7 @@ output_yaml:
 
 <!-- TO-DO: --> 
 
-<!-- 1) Last section is called Virtues. Adding a discussion of the Four Virtues including their pictures. A paragraph or two about each. Only need to do this for the height example, not the pennies -->
+<!-- 1) Last section is called Virtues. Adding a discussion of the Four Virtues including their pictures. A paragraph or two about each. Only need to do this for the height example, not the pennies. precepttor tables, pupulation, figures -->
 
 <!-- ```{r echo=FALSE, fig.margin=TRUE} -->
 <!-- knitr::include_graphics("other/images/fortitude.jpg") -->
@@ -101,7 +101,7 @@ In Chapter \@ref(one-parameter), we studied sampling. We started with a "tactile
 
 Remember: There is a *truth* here. There is an urn. It has red and white balls in it. An exact, but unknown, number of the balls are red. An exact, but unknown, number of the balls are white. An exact, but unknown, percentage of the balls are red -- defined as the number red divided by the sum of the number red and the number white. Our goal was to estimate that unknown percentage. We wanted to make statements about the world, even if we can never be certain that those statements are *true*. We will never have the time or inclination to actually count all the balls. We use the term *parameter* for things that exist but which are unknown. We use statistics to estimate the true values of parameters.
 
-We then mimicked this *physical* sampling exercise with an equivalent *virtual* sampling exercise using the computer. In Subsection \@ref(different-shovels), we repeated this sampling procedure 1,000 times, using three different virtual shovels with 25, 50, and 100 slots. We visualized these three sets of 1,000 estimates in Figure \@ref(fig:comparing-sampling-distributions-3) and saw that as the sample size increased, the variation in the estimates decreased.  We then expanded this for all sample sizes from 1 to 100.
+We then mimicked this *physical* sampling exercise with an equivalent *virtual* sampling exercise using the computer. In Subsection \@ref(different-shovels), we repeated this sampling procedure 1,000 times, using three different virtual shovels with 25, 50, and 100 slots. We visualized these three sets of 1,000 estimates in Chapter 6 and saw that as the sample size increased, the variation in the estimates decreased.  We then expanded this for all sample sizes from 1 to 100.
 
 In doing so, we constructed *sampling distributions*. The motivation for taking a 1,000 repeated samples and visualizing the resulting estimates was to study how these estimates varied from one sample to another; in other words, we wanted to study the effect of *sampling variation*. We quantified the variation of these estimates using their standard deviation, which has a special name: the *standard error*. In particular, we saw that as the sample size increased from 1 to 100, the standard error decreased and thus the sampling distributions narrowed. Larger sample sizes led to more *precise* estimates that varied less around the center. 
 
@@ -135,7 +135,7 @@ library(skimr)
 
 ### What is the average year on US pennies in 2019?
 
-Try to imagine all the pennies being used in the United States in 2019. That's a lot of pennies! Now say we're interested in the average year of minting of *all* these pennies. One way to compute this value would be to gather up all pennies being used in the US, record the year, and compute the average. However, this would be near impossible! So instead, let's collect a *sample* of 50 pennies from a local bank in downtown Northampton, Massachusetts, USA as seen in Figure \@ref(fig:resampling-exercise-a).
+Try to imagine all the pennies being used in the United States in 2019. That's a lot of pennies! Now say we're interested in the average year of minting of *all* these pennies. One way to compute this value would be to gather up all pennies being used in the US, record the year, and compute the average. However, this would be near impossible! So instead, let's collect a *sample* of 50 pennies from a local bank in downtown Northampton, Massachusetts, USA as seen in the photo below
 
 <!-- CB: I think it would help  with the Preceptor table concept to ask the question of 'If we are given a random penny in 2019, what would we predict the year to be on that penny?' And that way you can tie in and reinforce the idea of the predictive model which is introduced in my chapter like we talked about. Either introduce here or around line 246? -->
 
@@ -143,7 +143,7 @@ Try to imagine all the pennies being used in the United States in 2019. That's a
 knitr::include_graphics(c("07-two-parameters/images/bank.jpg", "07-two-parameters/images/roll.jpg"))
 ```
 
-An image of these 50 pennies can be seen in Figure \@ref(fig:resampling-exercise-c). For each of the 50 pennies starting in the top left, progressing row-by-row, and ending in the bottom right, note there is an "ID" identification variable printed in black and the year of minting printed in white.
+An image of these 50 pennies can be seen in below. For each of the 50 pennies starting in the top left, progressing row-by-row, and ending in the bottom right, note there is an "ID" identification variable printed in black and the year of minting printed in white.
 
 ```{r, echo=FALSE, fig.cap="50 US pennies labelled."}
 knitr::include_graphics("07-two-parameters/images/3.jpg")
@@ -166,7 +166,7 @@ pennies_sample
 
 ```
 
-The `pennies_sample` data frame has 50 rows corresponding to each penny with two variables. The first variable `ID` corresponds to the ID labels in Figure \@ref(fig:resampling-exercise-c), whereas the second variable `year` corresponds to the year of minting saved as a numeric variable, also known as a double (`dbl`).
+The `pennies_sample` data frame has 50 rows corresponding to each penny with two variables. The first variable `ID` corresponds to the ID labels in our table above, whereas the second variable `year` corresponds to the year of minting saved as a numeric variable, also known as a double (`dbl`).
 
 Additionally, let's look at what a Preceptor Table would look like in this `pennies_sample example`. Essentially, what we are seeing is that if you are given a random penny in 2019, we are trying to estimate what they year is for that random penny. The last row is your best guess if that random year is given, because given that we are dealing with one parameter we are only dealing with one row. 
 
@@ -197,7 +197,7 @@ pennies_sample %>%
   cols_align(align = "center", columns = TRUE)
 ```
 
-Based on these 50 sampled pennies, what can we say about *all* US pennies in 2019? Let's study some properties of our sample by performing an exploratory data analysis. Let's first visualize the distribution of the year of these 50 pennies using our data visualization tools from Chapter \@ref(viz). Since `year` is a numerical variable, we use a histogram in Figure \@ref(fig:pennies-sample-histogram) to visualize its distribution.
+Based on these 50 sampled pennies, what can we say about *all* US pennies in 2019? Let's study some properties of our sample by performing an exploratory data analysis. Let's first visualize the distribution of the year of these 50 pennies using our data visualization tools from Chapter \@ref(viz). Since `year` is a numerical variable, we use a histogram to visualize its distribution.
 
 ```{r, fig.cap="Distribution of year on 50 US pennies."}
 pennies_sample %>%
@@ -261,9 +261,9 @@ absurd_hack
 
 ```
 
-Going back to our 50 sampled pennies in Figure \@ref(fig:resampling-exercise-c), the point estimate of interest is the sample mean $\overline{x}$ of `r x_bar %>% pull(mean_year) %>% round(2)`. This quantity is an *estimate* of the population mean year of *all* US pennies $\mu$.
+Going back to our 50 sampled pennies, the point estimate of interest is the sample mean $\overline{x}$ of `r x_bar %>% pull(mean_year) %>% round(2)`. This quantity is an *estimate* of the population mean year of *all* US pennies $\mu$.
 
-Recall that we also saw in Chapter \@ref(one-parameter) that such estimates are prone to *sampling variation*. For example, in this particular sample in Figure \@ref(fig:resampling-exercise-c), we observed three pennies with the year 1999. If we sampled another 50 pennies, would we observe exactly three pennies with the year 1999 again? More than likely not. We might observe none, one, two, or maybe even all 50! The same can be said for the other 26 unique years that are represented in our sample of 50 pennies.
+Recall that we also saw in Chapter \@ref(one-parameter) that such estimates are prone to *sampling variation*. For example, in this particular sample, we observed three pennies with the year 1999. If we sampled another 50 pennies, would we observe exactly three pennies with the year 1999 again? More than likely not. We might observe none, one, two, or maybe even all 50! The same can be said for the other 26 unique years that are represented in our sample of 50 pennies.
 
 So what do we do about this sampling variation? One solution is that we create bootstrap samples! As you already know that resampling is a significant tool in data science, bootstrapping is one such resampling method that many data scientists use today. Bootstrapping essentially repeatedly draws independent samples from our data set with replacement. By sampling with replacement, the same observation can be sampled multiple times and each bootstrap sample will have the same number of observations as the original data set. 
 
@@ -350,7 +350,7 @@ Now think back to our pennies exercise where you are trying to estimate the true
 
 On the one hand, we could use the appropriate *point estimate/sample statistic* to estimate $\mu$, which we saw in Table \@ref(tab:table-ch8-b) is the sample mean $\overline{x}$. Based on our sample of 50 pennies from the bank, the sample mean was `r x_bar %>% pull(mean_year) %>% round(2)`. Think of using this value as "fishing with a spear."
 
-What would "fishing with a net" correspond to? Look at the bootstrap distribution in Figure \@ref(fig:one-thousand-sample-means) once more. Between which two years would you say that "most" sample means lie?  While this question is somewhat subjective, saying that most sample means lie between 1992 and 2000 would not be unreasonable. Think of this interval as the "net."
+What would "fishing with a net" correspond to? Look at the bootstrap distribution we created once more. Between which two years would you say that "most" sample means lie?  While this question is somewhat subjective, saying that most sample means lie between 1992 and 2000 would not be unreasonable. Think of this interval as the "net."
 
 What we've just illustrated is the concept of a *confidence interval*, which we'll abbreviate with "CI" throughout this book. As opposed to a point estimate/sample statistic that estimates the value of an unknown population parameter with a single value, a *confidence interval* \index{confidence interval} gives what can be interpreted as a range of plausible values. Going back to our analogy, point estimates/sample statistics can be thought of as spears, whereas confidence intervals can be thought of as nets.
 
@@ -631,7 +631,7 @@ We also mentioned that this sampling activity does not reflect how sampling is d
 
 <!-- DK: There is nothing wrong with this text, but I don't like it. We need a more coherent story connecting sampling to the bootstrap. Randomization is magic and these are two forms of randomization. Maybe each chapter after this should mention three types of randomization. These two and then assignment to treatment. Indeed, all of statistics is dealing with situations in which we could not use all three randomization techniques, or approximations thereto. -->
 
-The workaround to having a *single* sample was to perform *bootstrap resampling with replacement* from the single sample. We did this in the resampling activity in Section \@ref(resampling-tactile) where we focused on the mean year of minting of pennies. We used pieces of paper representing the original sample of 50 pennies from the bank and resampled them with replacement from a hat. We had 35 of our friends perform this activity and visualized the resulting 35 sample means $\overline{x}$ in a histogram in Figure \@ref(fig:tactile-resampling-6). 
+The workaround to having a *single* sample was to perform *bootstrap resampling with replacement* from the single sample. We did this in the resampling activity in Section \@ref(resampling-tactile) where we focused on the mean year of minting of pennies. We used pieces of paper representing the original sample of 50 pennies from the bank and resampled them with replacement from a hat. We had 35 of our friends perform this activity and visualized the resulting 35 sample means $\overline{x}$ in a histogram. 
 
 This distribution was called the *bootstrap distribution* of $\overline{x}$. We stated at the time that the bootstrap distribution is an *approximation* to the sampling distribution of $\overline{x}$ in the sense that both distributions will have a similar shape and similar spread. \index{bootstrap!distribution!approximation of sampling distribution} Thus the *standard error* of the bootstrap distribution can be used as an approximation to the *standard error* of the sampling distribution. 
 <!-- DK: The below seems useful, but does it belong in a Conclusion? Probably not. Perhaps each chapter ends with some stats nonsense (like CLT in sampling chapter) before we get to the real conclusion. -->
