@@ -601,7 +601,7 @@ Second, it's important to understand that data is always missing. We could easil
 
 **Justice**
 
-Let's try to understand the math behind our height model. For one, height is normally distributed because our data is continuous. Unlike in the previous chapter where data is discrete, we are dealing with continous data. In addition, we can find the mean height and standard deviation of height, both of which are parameters for the normal distribution. Therefore, we will see the following:
+Let's try to understand the math behind our height model. For one, height is normally distributed because our data is continuous. Unlike in the previous chapter where data is discrete, we are dealing with continuous data. In addition, we can find the mean height and standard deviation of height, both of which are parameters for the normal distribution. Therefore, we will see the following:
 
 $$ height_i \sim N(\beta, \sigma^2)$$
 But what about the standard error in our data. What does its distribution look like? Well the distribution of our standard error is also normally distributed. This is because the errors from our bootstrap samples are random and continuous, which will also follow a normal distribution.
